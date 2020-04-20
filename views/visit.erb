@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Barber Shop</title>
+  </head>
+  <body>
+    <br>
+    <h2>Sign up</h2>
+    <p>On this page you can register with us in the Barber Shop</p><br>
+
+    <form action="/visit" method="post" class="form-group">
+
+      <div class="form-group">
+        <label>Your name</label>
+        <input name="username" type="text" class="form-control input_color" placeholder="Input your name" value="<%= @username %>">
+      </div>
+
+      <div class="form-group">
+        <label>Your phone</label>
+        <input name="phone" type="text" class="form-control input_color" placeholder="Input your phone" value="<%= @phone %>">
+      </div>
+
+      <div class="form-group">
+        <label>Visiting date and time</label>
+        <input id="datetimepicker" name="date_time" type="text" class="form-control input_color" placeholder="Input your visiting date and time" value="<%= @date_time %>">
+      </div>
+
+      <br><br>
+
+      <label for="exampleFormControlSelect1">Example select</label>
+      <select name="barber" class="form-control input_color" id="exampleFormControlSelect1">
+        <!-- <option <%= @barber == 'Jessie Pincman' ? 'selected' : '' %> >Jessie Pincman</option>
+        <option <%= @barber == 'Walter White' ? 'selected' : '' %> >Walter White</option>
+        <option <%= @barber == 'Gus Fring' ? 'selected' : '' %> >Gus Fring</option> -->
+
+        <% @barbers.each do |item| %>
+        <option <%= @barber == item['name'] ? 'selected' : '' %>><%= item['name'] %></option>
+        <% end %>
+      </select><br>
+
+      <div class="form-group">
+        <label>Choose your hair color: </label> <br>
+
+        <select name="colorpicker">
+          <option value="#7bd148">Green</option>
+          <option value="#5484ed">Bold blue</option>
+          <option value="#a4bdfc">Blue</option>
+          <option value="#46d6db">Turquoise</option>
+          <option value="#7ae7bf">Light green</option>
+          <option value="#51b749">Bold green</option>
+          <option value="#fbd75b">Yellow</option>
+          <option value="#ffb878">Orange</option>
+          <option value="#ff887c">Red</option>
+          <option value="#dc2127">Bold red</option>
+          <option value="#dbadff">Purple</option>
+          <option value="#e1e1e1">Gray</option>
+        </select>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-primary">Sign up</button>
+
+    </form>
+
+    <script type="text/javascript">
+
+      $('select[name="colorpicker"]').simplecolorpicker();
+      $('#datetimepicker').datetimepicker();
+
+      $('.input_color').css('background-color', '#F0F8FF');
+      $('body').css('background-color', 'white')
+    </script>
+
+  </body>
+</html>
